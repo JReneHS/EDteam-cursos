@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Clase 9</title>
+	<style>
+		video {
+			width: 720px
+		}
+	</style>
+</head>
+<body>
+	<!-- Video con controles propios de HTML -->
+	<video src="./media/susto-m13.mp4" controls poster="img/LogoMenosTrece.jpg"></video>
+	<hr>
+	<!-- Video con botones programados con un script -->
+	<video id="video" src="./media/susto-m13.mp4" poster="img/LogoMenosTrece.jpg"></video>
+	<button id="play">play</button>
+	<button id="pause">pause</button>
+	<hr>
+	<audio src="media/dreaml.flac" controls></audio>
+
+	<script>
+		const video = document.getElementById('video')
+		const play = document.getElementById('play')
+		const pause = document.getElementById('pause')
+		play.addEventListener('click', ()=> {video.play()})
+		pause.addEventListener('click', ()=> {video.pause()})
+	</script>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Clase 8</title>
+</head>
+<body>
+	<h1>Formularios</h1>
+	<form>
+		<fieldset> <!-- Ayuda a agrupar diferentes campos para facilitar la experiencia de usuario -->
+			<legend>Tus datos personales</legend> <!-- Titulo del agrupamiento -->
+			<div>	<!-- La mejor manera de usar formularios es con la etiqueta div -->
+				<!-- Esta es una forma de manejar formularios, enlazando el label con el input mediate un for/id -->
+				<label for="nombre">Ingrese Usuario:</label>
+				<input id="nombre" type="text" name="UserName" placeholder="Usuario" required>
+				<!-- El atributo name se usa si o si para que el backend sepa a que campo pertenece esta informacion -->
+				<!-- EL atributo type define el tipo de dato a ingresar al formulario -->
+				<!-- Placeholder es para tener un texto predefinido dentro del input pero que no afecta los datos -->
+				<!-- El atributo required te obliga a ingresar x dato para continuar -->
+			</div>
+			<div>
+				<label>
+					Ingrese su Correo:
+					<input type="email" name="correo" placeholder="email" required>
+				</label>
+			</div>
+		</fieldset>
+		<fieldset>
+			<legend>Otros Datos Importantes</legend>
+			<div>
+				<label>
+					ingrese su fecha de nacimiento:
+					<input type="date" name="nacimiento">
+				</label>
+			</div>
+			<div>
+				<label>
+					Ingrese cantidad:
+					<input type="number" name="cantidad" value="2" readonly>
+				</label>
+			</div>
+			<div>	
+				<label>
+					Ingrese Contraseña:
+					<input type="password" name="Password" placeholder="Password" required>
+				</label>
+			</div>
+		</fieldset>
+		<fieldset>
+			<legend>Tus pasatiempos</legend>
+			<label><input type="checkbox">Musica</label>
+			<label><input type="checkbox">Cine</label>
+			<label><input type="checkbox">Deporte</label>
+			<label><input type="checkbox">Leer</label>
+			<label><input type="checkbox">Respirar</label>
+			<label><input type="checkbox">Dormir</label>
+		</fieldset>
+		<fieldset>
+			<legend>genero</legend>
+			<label><input type="radio" name="gender">Hombre</label>
+			<label><input type="radio" name="gender">Mujer</label>
+			<label><input type="radio" name="gender">No quiero definir</label>
+		</fieldset>
+		<fieldset>
+			<legend>Select y opciones</legend>
+			<label for="country">Escoge tu Pais</label>
+			<select name="country" id="country">
+				<!-- Value es el dato que se manda al backend -->
+				<optgroup label="America">
+					<option value="pe">Perú</option> 
+					<option value="mx">México</option>
+					<option value="UA">USA</option>
+				</optgroup>
+				<optgroup label="Europa">
+					<option value="es">España</option> 
+					<option value="pr">Portugal</option>
+					<option value="it">Italia</option>
+				</optgroup>
+				<optgroup label="Asia">
+					<option value="jp">Japon</option> 
+					<option value="ch">China</option>
+					<option value="ru">Rusia</option>
+				</optgroup>
+			</select>
+		</fieldset>
+		<textarea name="mensaje" id="message" cols="30" rows="10" placeholder="Escribe tu mensaje"></textarea>
+		<input type="submit" value="Iniciar sesión">
+		<!-- <button>enviar</button> -->
+	</form>
+	<script>
+		document.getElementById('nombre').addEventListener('keyup', e =>{console.log(e.target.value)})
+	</script>
+</body>
+</html>

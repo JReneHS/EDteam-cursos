@@ -1,0 +1,1145 @@
+/* Para hacer comentarios en VSC es Shift + Alt + A */
+/* Para duplicar lineas en con Shift + Alt + arriba || abajo */
+/* Con Ctrl + Alt + up/down hago lineas multiples de seleccion*/
+/* Con Alt muevo lineas de pocision */
+/* Ctrl + izq/der se mueve por espacion en vez de caracter */
+/* Ctrl + D selecciona la siguiente palabra que esté resaltada */
+/* Ctrl * Shift * L selecciona TODAS las palabras resaltadas */
+/* Ctrl + Up/Down mueve la vista de la  pantalla */
+/* Alt + z ajusta las lineas al tamaño de la pantalla */
+/* Para no andar escribiendo let en cada declaracion de la variable se separa con comas y si es necesario puedes no instanciarlas es decir darles valor SCOPE (?) */
+/* JS usa CamelCase */
+let numero = 18,
+    nombre = 'Juan',
+    empresa = 'Nintendo',
+    edad, cargo, pais
+
+const eso = 30
+//eso = 20 
+/*No puedes modificar las constantes*/ 
+console.log(numero)
+console.log(numero +1)
+console.log(numero * 2)
+console.log(numero / 3)
+console.log(typeof numero)
+console.log(typeof nombre)
+console.log(typeof empresa)
+console.log(typeof edad)
+if (5 > numero) {
+    console.log(numero)
+}else{
+    console.log(numero + ' Es mayor a 5')
+}
+//***************************************************************************************************
+/* Tipos de datos */
+//************************Primitivos
+/* 
+    numeros
+    Strings '' "" ``
+            solos los backflips aceptan meter variables a la string
+            ademas podemos crear marcado HTML dentro de los `    `
+    Booleanos
+    Undefined (existe cuando no se asigna valor a algo)
+    Null (cuando algo de plano NO existe)
+    Symbol() permiten crear referencias unicas
+*/
+//************************Compuestos
+/* 
+    Sería el caso de los arrays
+    abstract data type (ADT)
+    o cualquier combinacion de ellos
+
+    typeof te devuelve el tipo de dato en forma de String
+*/
+
+/*
+tecnicamente un valor null es un objeto por cuestiones tecnicas internas de JS
+Los objetos se denotan con {}
+los array se denotan con []
+    se dice que array es un subtipo de objeto y devuelve object por un error de lenguaje
+existen tipos de dato funcion "function(){}"
+    igual se dice que es un subbtipo de objeto
+*/
+//*****************************************************************************************************
+/* 
+Type Coertion
+    Es la forma en que Js intenta interpretar los tipos de dato
+*/
+
+let numero = 5
+let nombre = 'Juan'
+let edad = '25'
+let cargo = 'estudiante'
+
+console.log(numero + numero)
+console.log(numero + nombre)
+console.log('hola' + ' mundo')
+console.log(nombre+' '+'tiene'+' '+edad+' '+'años')
+console.log('hola'*10)/* NaN */
+console.log('2'*20)/* 40 */
+console.log('2a'*20)/* NaN */
+console.log(true+'hola')/* truehola */
+console.log(true+1)/* 2 */
+console.log(false+1)/* 1 */
+console.log(false=='')/* true */
+//Podemos usar un dato por valor o por referencia
+//Todos los datos primitivos se pasan solo por valor
+//Todos los datos compuestos se pasan por referencia
+
+//***************************************************************************************************
+
+/* OPERADORES */
+/* 
+operaores de asignacion
+    =
+    +=
+    -=
+    /=
+    *=
+*/
+
+/* 
+operadores de comparacion
+    == compara valores (incluyendo el type Coertion)
+    === compara valor mas tipo de dato
+    != diferencia
+    !== diferencia contando tipo de dato
+    >
+    <
+    (se pueden comparar letras o cadenas por orden alfabetico)
+    >=
+    <=
+*/
+/* 
+Operadores unarios
+    Comparacion
+        typeof
+        !
+    Aritmeticos
+        +
+        -
+        *
+        /
+        %
+        ++
+        --
+*/
+/* 
+Operador Ternario
+    expresion ? si es verdad : si es falso (?:)
+*/
+
+let edad = prompt('dime tu edad')
+let pais =(edad >= 18) ? 'Eres mayor de edad' : 'Aun eres un niño'
+alert(pais)
+
+/*
+Operador de corto circuito (no es lo mismo que los operadores logicos)
+    || evalua el primer valor, si es null o falso asigna el segundo de lo contrario se queda con el primero
+    && si el primer valor es null o false se queda con ese valor, de lo contrario va al segundo
+*/
+let a,b,c,d
+a = b || 23 /* null || 23 -> 23 */
+console.log(a) /* a = 23 */
+d = b && a /* null && 23 -> null */
+console.log(d) /* d = null */
+b = 14 || 15 /* 14 || 15 -> 14 */
+console.log(b) /* b = 14 */
+c = b && a /* 14 && 23 -> 23 */
+console.log(c) /* c = 23 */
+
+
+//*************************************************************************************************
+
+/* 
+siempre que hay parentesis es metodo o funcion
+    toFixed() -> especifica en numero de decimales
+        edad.toFixed(2)
+            -> 23.00
+    parseInt() -> convierte texto a numero
+        variable = parseInt(texto,baseNumerica)
+        variable = parseInt('25',10)
+            -> 25
+    parseFloat() -> convierte texto a numero flotante
+        variable = parseFloat('23.3456',10)
+            -> 23.3456
+    objeto Math
+        Math.floor() -> redondea siempre hacia abajo
+        Math.ceil() -> redondea siempre hacia arriba
+        Math.round() -> redondea segun el valor
+        Math.random() -> devuelve un numero entre 0 - 1
+    
+    Si queremos numeros aleatorios entre 0 y 10
+        Math.raund(Math.random*10)
+*/
+
+//*************************************************************************************************
+
+/* 
+STRINGS
+Aqui se siguen respetando las estructuras basicas de string [0][1][2][3][4][5]...[n]
+                                                        ->  [H  O  L  A ...]
+    tiene propiedad
+        .length -> longitud de la cadena
+    Metodos
+    sin parametros
+    .trim() -> quita los espacios en blanco delante y detras
+    .toUpperCase() -> convierte todo a mayusculas
+            .toLoweCase() -> convierte todo en minusculas
+
+        Encontrar Caracteres
+            De Posicion
+                .indexOf(string) -> busca un array dentro de otro y devuelve la posicion
+                    'Hola'.indexOf('o') -> 1
+                tambien puedes restringir la busqueda
+                    .indexOf(string,posicion)
+                .lastIndexOf(String) -> lo mismo pero desde el final
+            De Booleanos
+            .includes(String) -> igual que indexOf pero devuelve un Boolean
+                'Hola'.includes('o') -> true
+            .startsWith(String) -> Busca Prefijos y devuelve un Boolean
+            .endsWith(String) -> Busca sufijos y devuelve un Boolean
+            
+        Metodos de Manipulacion
+            .replace(String-original,String-nuevo) -> reemplaza un texto
+                'Hola mundo'.raplace('mundo','René') -> 'Hola René'
+            .split(string de separacion) -> separa la cadena y las acomoda en un array
+                si deseas separa una cadena por sus caracteres ingresa una cadena vacia
+                    'Hola mundo'.split(' ') -> ['Hola','mundo']
+                    'Hola mundo'.split('') -> ['H','o','l','a',' ','m','u','n','d','o']
+                    'Hola mundo'.split('o') -> ['H','la mund','']
+            .substring(inicio,final) -> nos regresa el substring que empieza en la pocision inicio
+                                        El final es opcional (no incluye en la cadena el caracter final)
+                                        Si el final es nigativo extrae hacia atras
+            .substr(inicio,numero de caracteres a tomar) -> nos regresa la cadena que empieza en la pocision de inicio y 
+                                                            regresa la cantidad de caracteres que indicas.
+                                                            Si el inicio es negativo extrae hacia atras
+                'Hola mundo'.substr(2,5) -> 'la mu'
+            .slice(inicio,final) -> acepta numeros negativos y corta el texto ya sea contando adelante o atras. 
+*/
+
+//*************************************************************************************************
+
+if (5<2) console.log('hola')
+if ('a'==='b') console.log('mundo')
+if (true != false) {
+    console.log('Rene papu')
+}
+if ('23'=== 23) {
+    console.log('"23" === 23')
+} else {
+    console.log('"23" no es lo mismo que 23')
+    console.log('"23" !== 23')
+}
+if ('23'== 23) {
+    console.log('"23" es igual a 23')
+    console.log('"23" == 23')
+} else {
+    console.log('"23" no es lo mismo que 23')
+}
+/* En este caso ignora las demas condiciones no importa si son verdad */
+if (2<3) {
+    console.log('pasó primera condición');
+} else if (3>2) {
+    console.log('pasó segunda condición');
+} else if (10>2) {
+    console.log('pasó tercera condición');
+} else {
+    console.log('no pasó ninguna condición');
+}
+
+/* Condiciones multiples es decir
+Operadores logicos*/
+if (2>3 || 5<6) {
+    console.log('pasó primera condición');
+    console.log('operador ||');
+}
+if (3>2 && 10<11) {
+    console.log('pasó segunda condición');
+    console.log('operador &&');
+} else {
+    console.log('no pasó segunda condición');
+}
+/* Condiciones Anidadas */
+if (2<3) {
+    console.log('Paso condición 1');
+    if (5>2) {
+        console.log('Paso condición 1.1');
+    }
+}
+
+/* Aplicacion con el prompt de edad*/
+let age = parseInt(prompt('dime tu edad 7u7'),10)
+console.log(age);
+
+while (true) {
+    if (age !== NaN && age >= 18) {
+        console.log('Eres mayor de edad');
+        alert('Eres mayor de edad')
+        break
+    } else if (age !== NaN && age < 18) {
+        console.log('Eres un pañal, ¡largo!');
+        alert('Eres un pañal, ¡largo!');
+        break
+    }else{
+        age = parseInt(prompt('Ingresa un numero valido ¬¬'),10)
+    }
+}
+
+/* 
+Truthy y Falsy values
+    Es decir valorers que no son booleanos pero se comportan como tal
+*/
+/* Falsy */
+/* 
+    0
+    ""
+    NaN
+    undefined
+    null
+*/
+/* Truthy */
+/* 
+    String NO vacío
+    Numero diferente de cero 0 (hasta negativos)
+    arrays [] no importa si esta vacío o no
+    objetos
+*/
+
+//***********************************************************************************************
+
+/* Ciclos basicos */
+for (let i = 0; i < 1000; i++) {
+    if (i % 7 === 0) {
+        console.log(i)
+    }
+}
+
+for (let i = 0; i < 1000; i++) {
+    if((i % 2 === 0) || (i % 7 === 0)) console.log(i)
+}
+/* 
+break rompre el ciclo, sale del ciclo
+continue salta lo que sigue del ciclo
+*/
+for (let i = 0; i < 1000; i++) {
+    if((i % 2 === 0) || (i % 7 === 0)) continue
+    console.log(i)
+}
+
+let i = 0
+while (i < 100) {
+    console.log(i)
+    i++
+}
+
+i = 100
+while (i--) {
+    console.log(i);
+}
+
+let password = 'HolaBebe',
+    pass
+do {
+    pass = prompt('Ingresa la contraseña')
+} while (pass !== password);
+
+//***************************************************************************************************
+
+let answer = parseInt(prompt('escoge un numero del 1 a 5'),10)
+console.log(answer);
+switch (answer) {
+    case 1:
+        alert('Eres timido')
+        break
+    case 2:
+        alert('Eres un empollón')
+        break
+    case 3:
+        alert('Eres un pesado')
+        break
+    case 4:
+        alert('Eres feliz')
+        break
+    case 5:
+        alert('Pudrete')
+        break
+    default:
+        alert('Ingresa por favor un numero valido')
+        break
+}
+
+/* Encuestas simples*/
+let type = prompt(`La capital de Mexico es:
+a) Barcelona
+b) Washingon
+c) CDMX
+d) Lima
+e) Bogotá
+`).toUpperCase().trim()
+
+switch (type) {
+    case 'C':
+        alert('¡Correcto!')
+        break;
+    default:
+        alert('Respuesta incorrecta')
+        break;
+}
+
+//****************************************************************************************************
+
+/* 
+Que es una funcion?
+    es un trozo de codigo reutilizable en el que hay un conjunto de instrucciones
+    input -> funcion -> output
+    input -> funcion -> output1 -> funcion -> output2 -> funcion -> ...
+    input -> argumentos
+    output -> valor de retorno
+        *Las funciones sin valor de retorno devuelven undefined*
+Ejecucucion de una funcion
+    nombreDeLaFuncion(argumentos)
+    nombreFuncion()
+Una funcion puede ser método de un objeto y se le llama "Método"
+    objeto.nombreFuncion()
+        'Hola Mundo'.slice(3)
+Formas para declarar una funcion
+    function nombreFuncion(parametros) {
+        // Instruciones
+        return valor
+    }
+
+*/
+function handShake(person){
+    return `Hola ${person}`
+}
+
+let personas = ['juanito','pedro','fabiola','Lolito']
+
+for (let i = 0; i < personas.length; i++) {
+    console.log(handShake(personas[i]))
+}
+
+/* 
+Declaracion con funcion (ya en desuso)
+    var nombreFuncion = function() {...}
+*/
+
+/* 
+Declaracion por funciones de flecha
+    const nombreFuncion = (parametros) => {...}
+*/
+let personasSexo = [['Juanito','m'],['Panchita','f'],['Pedrito','m'],['Julito','m'],['Itzuzita','f'],['Merenguita','f']]
+
+const saludo = (person,sexo) => {
+    let saludo = (sexo === 'm') ? 'Bienvenido' : 'Bienvenida'
+    return `${saludo} a Casita, ${person}`
+}
+
+for (let i = 0; i < personasSexo.length; i++) {
+    console.log(saludo(personasSexo[i][0],personasSexo[i][1]))
+}
+
+/* 
+Si la funcion de flecha retorna directamente un valor, sin instrucciones adicionales
+la sintaxis es reducida:
+    const nombreFuncion = (parametros) => valor
+*/
+const sumar = (a,b) => a+b
+
+//*******************************************************************************************************
+
+/* 
+SON muy diferentes los parametros y los argumentos
+PARAMETROS -> Son VARIABLES LOCALES que se definen EN LA DECLARACION de la FUNCION
+ARGUMENTOS -> son los VALORES que se les asigna a las variables de la funcion
+
+se pueden tener parametros con valores por defecto
+*/
+
+const saludo = (person = 'Visitante',sexo = 'm') => { /* (person,sexo) son PARAMETROS */
+    let saludo = (sexo === 'm') ? 'Bienvenido' : 'Bienvenida'
+    return `${saludo} a Casita, ${person}`
+}
+
+console.log(saludo('Juan','m')) /* ('Juanito','m') son ARGUMENTOS */
+console.log(saludo('Pedro')) /* En este caso se pone el sexo = 'm' por omision */
+console.log(saludo()) /* En este caso los dos valores se asignan por omision */
+
+/*
+En caso de que haya más argumentos que parametros, se ignoran los sobrantes
+En caso de que haya menos argumentos que parametros, se designan como undefined 
+    a no ser que tengan un valor por defecto
+*/
+
+/* OPERADOR SPREAD (...) */
+/* 
+Se usa para mandar infinidad de argumentos
+*/
+
+const sumarTodo = (...numeros) => {
+    console.log(numeros)
+    let res = 0
+    for (let i = 0; i < numeros.length; i++) {
+        res += numeros[i]
+    }
+    return res
+}
+
+let sum = sumarTodo(1,2,3,4,5,6,7,8,9,10)
+console.log(sum);
+
+//*********************************************************************************************
+
+/* 
+CIUDADANO DE PRIMERA CLASE ->
+    las funciones son un valor en JS es decir:
+        + Pueden ser almacenadas en varaibles o constantes
+            funciones por expresion
+        + Pueden ser pasadar como argumentos de otra funcion
+            callbacks
+        + Pueden ser retornadas por otra funcion
+            closures
+        + Pueden tener metodos o propiedades
+            POO
+*/
+
+/* Funciones por expresion */
+const c = console.log /* Estoy copiando el funcionamiento de console.log en una constante c
+console.log SIN PARENTESIS se comporta como VALOR no como funcion, por eso puedo
+mandarla a alguna variable o a alguna constante */
+const multiplicar = (a,b) => a*b
+c(multiplicar(3,4)) /* Ahora puedo invocar a c en vez de console.log */
+c(c) /* Esto es equivalente a decir:
+    console.log(c) <==> console.log(console.log)
+    console.log() =/= console.log
+    console.log() -> es una FUNCION
+    console.log -> es un VALOR */
+
+console.log(console.log) /* ƒ log() { [native code] } */
+console.log(console.log()) /* Undefined */
+
+/* CallBacks */
+let edad = multiplicar(5,4)
+c(edad)
+let edad2 = multiplicar(multiplicar(5,4),2) /* Muy util para recursividad */
+c(edad2)
+
+/* Closures */
+function sumar(x) {
+    return function(y) {
+        return x + y
+    }
+}
+
+c(sumar(5)) /* En este ejemplo se queda hasta el primer return
+ya que solo se imboca una vez la funcion
+ƒ (y) {
+    return x + y
+} */
+
+c(sumar(5)(2)) /* <7> ya que se manda el segundo valor */
+
+/* Sumar con operador flecha */
+const sumar2 = x => y => x + y
+c(sumar2(5)(2))
+
+/* Cosa LOCAA */
+const doSomething = x => y => x * y
+const a = doSomething(2)(2) // a = 4
+const b = doSomething(3) // b = f (y) => 3 * y
+/* Realmente b es una funcion en espera */
+c(doSomething(a)(b(3))) // 4 * 3*3 = 4 * 9 = 36
+
+//**********************************************************************************************
+
+/* 
+FUNCIONES PURAS
+    es aquella que no causa un efecto secundario
+        es decir no modifica NADA de afuera
+            es una de las bases de la programacion funcional
+    siempre devuelve los mismos valores para los mismos parametros
+*/
+let c = console.log
+let a = 'Hola'
+/* Esta funcion NO modifica nada del exterior */
+const saludar = (saludo,persona) => `${saludo} ${persona}` 
+c(saludar(a,'René'))
+
+/* 
+FUNCIONES AUTOINVOCADAS
+    son aquellas que no necesitan invocarse es decir invocar con parentesis
+*/
+/* Cuando se encierra entre parentesis una funcion se transforma en una expresion */
+/* Realmente este tipo de patron ya no se usa en JS6 en adelante */
+const saludoAutoinvocado = ((saludo,persona) => `${saludo} ${persona}`)(a,'Luis')
+c(saludoAutoinvocado)
+
+/* 
+FUNCIONES NOMBRADAS Y ANONIMAS
+    las funciones nombradas son todas las que tienen nombre
+    las funciones anonimas NO tienen nombre
+        normalmente se encuentran dentro de los CallBacks
+        () => {} es una funcion anonima
+*/
+setTimeout(() => {
+    alert('Hola BEBE, tardé 3000 ms (3seg)')
+},3000) 
+/* setTimeout es un metodo del objeto global
+    espera cierto tiempo para ejecutar ALGO */
+
+//***************************************************************************************************
+
+/* 
+SCOPE
+    es el contexto del que una variable EXISTE
+    el ejemplo mas sencillo es el grupo interno de  un bloque {}
+    NO PUEDES METERTE DENTRO DE UN BLOQUE
+    pero...
+    si estás dentro de un bloque SI PUEDES LEER LO QUE ESTÁ FUERA DE EL
+*/
+let c = console.log
+{
+    let profesor = 'Gio'
+    c(profesor)
+}
+c(profesor) /* Profesor is not defined */
+
+{
+    let edad = 23
+    {
+        c(edad) /* SI puedes leer de adentro hacia a fuera */
+    }
+}
+c(edad) /* NO puedes leer de afuera hacia adentro */
+
+/* 
+CLOSURES
+    son como a travez de funciones internaspodemos llegar a valores externos
+    pueden ser funciones normales o con flecha
+*/
+
+function aumentar() {
+    let numero = 0
+    return function() {
+        numero++
+        c(numero)
+    }
+}
+
+aumentar() /* No imprime nada porque solo genera numero = 0 */
+c(aumentar()) /* Aqui se ve que realmente es una funcion en espera */
+aumentar()() /* aquí se ejecuta la segunda funcion */
+aumentar()()
+aumentar()()
+aumentar()()
+aumentar()()
+aumentar()()
+/* No hay aumento porque en cada invocacion se renueva numero = 0 */
+const incrementar = aumentar()
+incrementar()
+incrementar()
+incrementar()
+incrementar()
+incrementar()
+incrementar()
+incrementar()
+/* 
+En este caso SI hay incremento porque realmente:
+aumentar() = ƒ () {
+    numero++
+    c(numero)
+}
+En este caso Incrementar esta accediendo al SCOPE de aumentar() y está
+ejecutando la funcion interna anonima
+*/
+c(numero)
+/* En cambio con console.log() no le es posible acceder al SCOPE de aumentar() */
+
+/* 
+THIS
+    representa AL OBJETO del cual se ejecuta la funcion (igual que java)
+*/
+let user = {
+    nombre: 'René',
+    edad: 24,
+    getEdad(){
+        c(this.edad)
+    }
+}
+let edad = 15
+user.getEdad()
+let perona = {
+    nombre: 'René',
+    edad: 24,
+    getEdad(){
+        c(edad)
+    }
+}
+perona.getEdad() /* Cuando NO hay this, busca en el SCOPE mas alto, al objeto global*/
+
+//*****************************************************************************************************
+
+/* 
+ARRAYS
+    es una lista de valores separados por comas y encerrados en corchetes
+    tiene la propiedad length
+*/
+let c = console.log
+let array = ['hola',2,true,undefined,[1,2,3,4,5],{}]
+c(array)
+let largo = array.length -1
+
+/* Se pueden asignar varaibles a cada uno de los elementos del array */
+/* DESESTRUCTURACION
+    es decir: dividir estructuras en partes */
+let [s1,s2,s3,s4,s5,s6] = array
+/* Se hace un array de VARIABLES y se asignan a cada valor del array */
+
+/* METODOS */
+/* 
+    array.push(dato) -> agrega un dato al FINAL del array
+    array.pop() -> elimina y retorna el ULTIMO valor del array
+
+    array.unshift(dato) -> agrega un dato al INICIO del array
+    array.shift() -> elimina y retorna el PRIMER valor del array
+
+    array.splice(indiceInicio,cantidadBorrar,valor1,valor2,valor3,...)
+        Esto lo que hace es eliminar y agregar datos desde una posicion especifica
+            array.splice(2,0,'a','b','c')
+                En Posicion 2
+                elimina 0 datos
+                agrega en esa posicion los datos 'a' , 'b' , 'c'
+            array.splice(2,2)
+                En Posicion 2
+                elimina 2 datos (es decir el dato 2 y dato 3)
+    array.slice(inicio,fin-1)
+        Crea un NUEVO ARRAY a partir de los datos de otro 
+        y NO MODIFICA el array original
+*/
+
+let lista = [1,2,3,4,5,6,7,8,9]
+lista.push('Beto') /* (10) [1, 2, 3, 4, 5, 6, 7, 8, 9, "Beto"] */
+lista.push('DEDO') /* (11) [1, 2, 3, 4, 5, 6, 7, 8, 9, "Beto", "DEDO"] */
+lista.pop() /* DEDO */
+lista.unshift('Coral') /* (11) ["Coral", 1, 2, 3, 4, 5, 6, 7, 8, 9, "Beto"] */
+lista.unshift('Cabra') /* (12) ["Cabra", "Coral", 1, 2, 3, 4, 5, 6, 7, 8, 9, "Beto"] */
+lista.shift() /* Cabra */
+lista.splice(3,0,{}) /* (12) ["Coral", 1, 2, {…}, 3, 4, 5, 6, 7, 8, 9, "Beto"] */
+lista.splice(1,2) /* (10) ["Coral", {…}, 3, 4, 5, 6, 7, 8, 9, "Beto"] */
+let nuevaLista = lista.slice(2,8)
+c(lista) /* (10) ["Coral", {…}, 3, 4, 5, 6, 7, 8, 9, "Beto"] */
+c(nuevaLista) /* (6) [3, 4, 5, 6, 7, 8] */
+
+//*************************************************************************************************
+
+/* 
+Existen metodos NAIVOS para ordenar un array
+*/
+/* Reverse */
+let c = console.log
+let nombre = 'Julio Verne'
+let array1 = nombre.split('')
+c(nombre)
+c(array1)
+array1.reverse() /* Voltea el Array (de atras para adelante) */
+c(array1)
+let erbmon = array1.join('') /* Lo contrario a .split() */
+c(erbmon)
+/* Todo lo anterior se puede hacer en una sola linea
+    nombre.split('').reverse().join('')
+    Inclusive hacer una funcion:->
+*/
+const reverseText = string => string.split('').reverse().join('')
+
+/* Sort */
+let letras = ['Z','B','D','F','f','A']
+c(letras.sort()) /* (6) ["A", "B", "D", "F", "Z", "f"] */
+
+/* Aunque sort SOLO FUNCIONA CON LETRAS
+YA QUE USA STRINGS COMO ORDENAMIENTO */
+let num = [1,2,30,32,200,1000,1234]
+c(num.sort()) /* (7) [1, 1000, 1234, 2, 200, 30, 32] */
+
+/* para ordenar numeros se usa un callback */
+c(num.sort((a,b) => a - b))
+/* Aqui esta funcion está comparando por parejas
+si a > b  ->  a-b = +
+si a < b  ->  a-b = -
+y así los ordena
+*/
+/* La función de comparación "(a,b) => a - b" no devuelve true ni false,
+el método sort espera un valor positivo, un cero o un valor negativo para hacer
+intercambio de posiciones en el arreglo conforme vaya recorriendolo 
+Actuaría como una especie de BubleSort
+*/
+
+//*********************************************************************************************
+
+let c = console.log
+let numeros1 = [1,2,3,4,5,6,7,8,9,1000]
+let numeros2 = [300,250,21,7,57,691000]
+let string1 = numeros1.join(' ') /* Crea un string separando los valores con ' ' */
+c(string1)
+let string2 = numeros1.join(',') /* Crea un string separando los valores con ',' */
+c(string2)
+let array1 =  numeros1.concat(numeros2) /* Concatena 2 arrays: "numeros1" y "numeros2" */
+c(array1)
+/*
+La diferencia entre push y concat es que
+push() MODIFICA EL ARRAY
+concat() CREA UN NUEVO ARRAY
+*/
+
+/* ENCONTRAR UN VALOR EN EL ARRAY */
+numeros1.indexOf(2)
+/* Te devuelve la posicion del dato en caso de no encontrar devuelve -1 */
+numeros1.find((numeros1) => numeros1 > 100)
+/* .find(callback) lee una funcion de condicion y
+te devuelve el primer valor que la cumple
+(argumentos) => cumplimiento
+*/
+
+/* Eliminar elementos repetidos*/
+/* No existe un metodo directo que lo haga pero hay un buen truco
+usando la funcion Set:
+    si haces: 
+        new Set(array)
+            te devuelve UN OBJETO, no un array
+            (6) {10, 100, 23, 57, 27, 107}
+    con el OPERADOR SPREAD:
+        ...new Set(array)
+            genera un error
+    EMPERO
+        [... new Set(array)]
+            contiene los datos del objeto en un array
+            (6) [10, 100, 23, 57, 27, 107]
+*/
+let itero = [10,100,23,10,23,57,57,27,107,100]
+c(itero)
+let novo = [...new Set(itero)]
+c(novo)
+/* Inclusive se puede hacer una funcion */
+const removeDoppelganger = (array) => [...new Set(array)]
+
+
+//***********************************************************************************************
+
+
+/* SPREAD OPERATOS*/
+/* Estos son solo algunos usos del operador "..." */
+/*
+De una forma simple lo que hace es "expandir" o
+desempaquetar los datos o valores de "algo".
+Es como si abrieras de forma explosiva un paquete de galletas
+y salieran todas volando, por ende deberían estar contenidas en algo
+*/
+let itero = [10,100,23,10,23,57,57,27,107,100]
+/* desempaqueta TODOS los datos del Objeto Set y se almacenan en un array */
+let novo = [...new Set(itero)]
+
+/* 
+Se usa para mandar infinidad de argumentos
+ya que expande todos los datos que mandas y los anexas
+a los argumentos de una funcion
+*/
+const sumarTodo = (...numeros) => {
+    console.log(numeros)
+    let res = 0
+    for (let i = 0; i < numeros.length; i++) {
+        res += numeros[i]
+    }
+    return res
+}
+let sum = sumarTodo(1,2,3,4,5,6,7,8,9,10)
+
+/* USAR SPREAD OPERATOR CON LA LIBRERIA (Objeto) MATH */
+/* 
+Las funciones Math.min() y Math.max() no reciben arrays:
+    Math.min() -> devuelve el valor MENOR de un conjunto
+    Math.max() -> devuelve el valor MAYOR de un conjunto
+*/
+/* Para que estas funciones acepten arrays tienes que usar
+el spread operator (...) ya que así se desempaquetan */
+c(Math.min(novo)) /* NaN */
+c(Math.max(novo)) /* NaN */
+c(Math.min(...novo)) /* 10 */
+c(Math.max(...novo)) /* 107 */
+
+//***************************************************************************************************
+
+/* 
+Normalmente se recorre con estos bucles:
+    for
+    for of
+    .forEach(callBack(elemento,indice,array))
+    .some(callBack(elemento,indice,array))
+    .every(callBack(elemento,indice,array))
+
+    Super Especiales
+        .map(callBack(elemento,indice,array))
+        .filter(callBack(elemento,indice,array))
+        .reduce(callBack(previousValue,currentValue,indice,array)
+*/
+let c = console.log
+let array = ['a','b','c','d','e','f','g','h']
+let teachers = ['Juan','Pedro','Pablo','Lucas']
+let numbers = [5,6,7,8,10,12,15]
+// for
+for (let i = 0; i < array.length; i++) {
+    c(array[i])
+}
+
+// for of
+for (const element of array) {
+    c(element)
+}
+
+// .forEach()
+/* Se aplica cuando queremos aplicar una funcion a cada elemento */
+array.forEach((element,i) => {
+    c(element)
+    c(i)
+})
+
+teachers.forEach((element,i,arr) => {
+    c(element + ' [' + i + '] <' + arr + '>')
+})
+
+numbers.forEach((element,i,arr) => {
+    c(numbers[i] *=element)
+    c(arr)
+})
+
+// .some(callBack)
+// .every(callBack)
+/* 
+Si quieres saber si alguno de los elementos cumple con alguna condicion 
+retorna un boolean
+
+Some sería como un or ||
+    ya que ve Si Alguno cumple con esa condicion
+Every sería como un and &&
+    ya que vi Si Todos cumplen con la condicion
+*/
+teachers.some(el => el === 'Pedro') /* true */
+teachers.some(el => el === 'Alan') /* false */
+teachers.some(el => el.includes('a')) /* true */
+teachers.some(el => el.length >= 3) /* true */
+
+teachers.every(el => el.includes('a')) /* false */
+teachers.every(el => el.length >= 3) /* true */
+
+
+/* ESTAS TRES FUNCIONES O METODOS GENERAN UN NUEVO ARRAY 
+NUNCA MODIFICAN EL ARRAY ORIGINAL... SALVO:
+    en el DOM (API del ordenador)
+        pero ya son cosas del DOM no de JS
+*/
+
+// .map(callBack)
+/* Transforma TODOS los elementos del array segun el CallBack */
+/* Lo que hace es aplicar el callBack a Todos los elementos del array */
+numbers.map(el => el*el) /* (7) [25, 36, 49, 64, 100, 144, 225] */
+
+
+// .filter(callBack)
+/* Filtra los elementos que coincidan con la condicion del CallBack */
+numbers.filter(el => el > 5) /* (6) [6, 7, 8, 10, 12, 15] */
+numbers.filter(el => el % 5 === 0) /* (3) [5, 10, 15] */
+
+// .reduce(callBack)
+/* Reduce TODOS los elementos a un unico valor */
+/* Al igual que sort() compara de 2 en 2 */
+numbers.reduce((a,b) => a + b)
+
+//**********************************************************************************************
+
+/* Los objetos se toma como una especie de estructura de datos */
+/* la sintaxis es
+    {
+        propiedad1: valor,
+        propiedad2: valor,
+        propiedad3: valor,
+        ...
+        propiedadn: valor,
+
+        metodo1(){
+            //codigo del metodo
+        }
+        metodo2(){
+            //codigo del metodo
+        }
+        ...
+        metodo3(){
+            //codigo del metodo
+        }
+    }
+*/
+
+let perro = {
+    nombre: 'grut',
+    edad: 3,
+    color: 'abigarrado',
+    sexo: 'macho',
+    vacunas: true,
+    correr(){
+        console.log(`${this.nombre} está corriendo`)
+    }
+}
+
+let user = {
+    nombre: 'Jorge',
+    edad: 21,
+}
+
+/* 
+Hay dos formas de acceder a los valores de los objetos
+    operador punto .
+    con corchetes []
+*/
+user.nombre
+user['nombre']
+
+/* Los objetos tambien pueden recibir expresiones como propiedades */
+let a = 'hola', b = 'mundo'
+let saludo = {
+    [a + b]: 'Mi primer hola mundo' /* {holamundo: "Mi primer hola mundo"} */
+}
+saludo[a+b]
+saludo.holamundo
+
+/* Tambien podemos igualar a variables */
+let myObject = {
+    a: a, /* a = 'hola' */
+    b: b /* b = 'mundo' */
+} /* {a: "hola", b: "mundo"} */
+
+/* Otra forma de hacerlo es */
+let myObject2 = {a,b} /* {a: "hola", b: "mundo"} */
+
+/* en JS puedes modificar los objetos durante ejecucuion */
+/* Se hace mediante los operadores:
+    delete ->borra
+    objeto.propiedad -> agrega
+        (obvio xD)
+*/
+let perro = {
+    nombre: 'grut',
+    edad: 3,
+    color: 'abigarrado',
+    sexo: 'macho',
+    vacunas: true,
+    correr(){
+        console.log(`${this.nombre} está corriendo`)
+    }
+}
+
+delete perro.edad /* Borra la propiedad 'edad' */
+perro.anioNacimiento = 2010 /* Agrega anioNacimiento */
+perro.feliz = true /* Agrega feliz */
+
+/* El operador In  */
+/* 
+devuelve true o false si existe esa propiedad dentro del Objeto
+*/
+'nombre' in perro /* true */
+'peso' in perro /* false */
+
+/* se puede recorrer un objeto con el operador in */
+for (const key in perro) {
+    if (perro.hasOwnProperty(key)) {
+        const element = perro[key];
+        c(element)
+    }
+}
+
+/* Tener cuidado con este ciclo ya que toma tambien en cuenta las propiedades y metodos heredados o mas bien agregados si es que se modifica el prototipo base */
+
+/* Si quieres algo que te devuelva las propiedades integras del objeto está: una modificacion (que realmente viene por defecto en VSC)*/
+for (const key in perro) {
+    if (perro.hasOwnProperty(key)) {
+        console.log(key)
+    }
+}
+
+//************************************************************************************************
+
+/* TODOS LOS DATOS BIENEN DE UN OBJETO EN JS (Tambien Java  y Kotlin) */
+/* Con la funcion Object.getPrototypeOf() te indica de que Objeto deriva */
+let amigo = 'Joke'
+typeof(amigo) /* String */
+console.log(amigo) /* Joke */
+Object.getPrototypeOf(amigo) /* String {"", constructor: ƒ, anchor: ƒ, big: ƒ, blink: ƒ, …} */
+/* Realmente TODOS los datos de JS son Objetos */
+let amigo2 = new String('Jose') /* Objeto Constructor */
+typeof(amigo2) /* Object */
+console.log(amigo2) /* String {Jose} */
+/* Por varios motivos no es bueno que hagas constructores de los datos basicos o nucleares por algo llamado "Cadena de prototipos" */
+/* Todos los prototipos empiezan por MAYUSCULAS */
+/* Accediendo a los prototipos puedes modificar el comportamiento de las clases ya que se heredan en la cadena de prototipos, inclusive agregarle nuevas propiedades y metodos a las clases usuales como String, Number,Boolean, etc... */
+String.prototype.length2 = 'Tu mamá' /* Ahora TODOS los Strings tienen una propiedad llamada length2 que devuelve 'Tu mamá' */
+/* El problema con agregar o heredar nuevas propiedades o metodos a los prototipos es que serán tomadas en cuenta por varios metodos de clase, por ejemplo el ciclo "for in" o el operador "in".
+
+Así que si declaras un Prototipo con 5 propiedades, creas varios objetos y despues modificas el prototipo, todos, absolutamente TODOS los objetos habidos y por haber tendrán esas modificaciones.
+*/
+
+/* 
+TODOS LOS OBJETOS SON MUTABLES 
+Los datos o valores primitivos son INMUTABLES
+    NO ES LO MISMO ASIGNAR VALORES QUE SER MUTABLE
+        Inclusive no estas "modificando" valores, estás asignando o cabiando nuevos valores
+Todos los objetos son pasados POR REFERENCIA (arrays tambien)
+*/
+
+/* Crear copia de objeto que no modifique el original */
+let perro = {
+    nombre: 'grut',
+    edad: 3,
+    color: 'abigarrado',
+    sexo: 'macho',
+    vacunas: true,
+    correr(){
+        console.log(`${this.nombre} está corriendo`)
+    }
+}
+
+let perro2 = Object.assign({},perro) /* Se pueden fusionar 2 objetos */
+
+/* RECORRIDO DE OBJETOS */
+
+/*
+For in
+    devuelve los nombres de las propiedades de un Objeto,
+    pero devuelve tambien las propiedades de la herencia de la cadena de prototipos
+        Si quieres solo las  propiedades personales del objeto, es decir sin su herencia, usa la funcion .hasOwnPropert()
+        <ver clase 20 para un ejemplo>
+ */
+
+/* 
+For of
+    NO RECORRE UN OBJETO SIN ALGUNA AYUDA, ya que un Objeto No tiene Indices
+    En jerga de JS: Un objeto no es un elemento iterable, por eso For of no funciona por si solo en un Objeto.
+
+    Si deseas usarle tendras que echar mano de alguno de estos 3 metodos:
+        Object.entries()
+            Devuelve como arrays cada una de las entradas del objeto, es decir la pareja de "propiedad : valor"
+        Object.keys()
+            Devuelve en un "Array like" con todas las propiedades (es decir los nombres)
+                Se dice que es "Array like" porque parece Array pero no lo es
+                Es un Objeto tipo Array donde las propiedades son los indices y los valores son los nombres de las propiedades. (Ejemplo mas adelante)
+        Object.values()
+            Exactamente que Object.key() pero devuelve los VALORES no las propiedades.
+*/
+Object.keys(perro)
+/* 
+(6) ["nombre", "edad", "color", "sexo", "vacunas", "correr"]
+    0: "nombre"
+    1: "edad"
+    2: "color"
+    3: "sexo"
+    4: "vacunas"
+    5: "correr"
+length: 6
+__proto__: Array(0)
+*/

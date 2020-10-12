@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Clase 7</title>
+	<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+	<table>
+		<caption>Mi horario de clases</caption> <!-- Titulo de la tabla -->
+		<colgroup> <!-- Con esta formacion puedes generar grupos de datos de columna para colorearlas o modificarlas en un solo movimiento -->
+			<col style="background: #aca">
+			<col span="4"> <!-- uso un compendio de 5 columnas para no repetir <col> 5 veces -->
+			<col style="background: #bbb">
+		</colgroup>
+		<thead> <!-- Solo y SOLO si usas las eiquetas <th> (table head) se deben usar <thead> y <tbody> (<tfoot> es opcional) -->
+			<tr> <!-- Table row es decir filas de la tabla, no existen columnas, solo conjuntos de filas -->
+				<th>Horas</th> <!-- Encabezado de la tabla -->
+				<th>Lunes</th>
+				<th>Martes</th>
+				<th>Miercoles</th>
+				<th>Jueves</th>
+				<th>Viernes</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>8:00</td> <!-- Table data biene a representar las celdas de la tabla -->
+				<td>C++</td>
+				<td>Rust</td>
+				<td>TypeScript</td>
+				<td>Python</td>
+				<td>Assambler</td>
+			</tr>
+			<tr>
+				<td>9:30</td>
+				<td colspan="5">Recreo</td> <!-- Es una celda que ocupa el lugar de 5 celdas -->
+			</tr>
+			<tr>
+				<td>10:00</td>
+				<td>MAI</td>
+				<td rowspan="2">Algoritmos</td> <!-- abarca el espacio de 2 filas -->
+				<td>PWA</td>
+				<td rowspan="2">Algebra Abs</td>
+				<td>HTML</td>
+			</tr>
+			<tr>
+				<td>11:30</td>
+				<td>HTML</td>
+				<td>GoLand</td>
+				<td>DB</td>
+			</tr>
+		</tbody>
+		<tfoot> <!-- Este agrupamiento es opcional, normalmente se usa para la parte final de la tabla y poner datos, resultados, sumas, finales, etc -->
+			<tr>
+				<td>////</td>
+				<td>7 creditos</td>
+				<td>7 creditos</td>
+				<td>7 creditos</td>
+				<td>7 creditos</td>
+				<td>7 creditos</td>
+			</tr>
+		</tfoot>
+	</table>
+</body>
+</html>

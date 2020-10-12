@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Clase 10</title>
+</head>
+<body>
+	<dialog id="modal"> <!-- modal instanciado en HTML -->
+		<h2>curso HTML 5 desde cero</h2>
+		<p>precio: $ 50000.00</p>
+		<p>prof: yooooo</p>
+		<button id="cerrar">cerrar</button>
+	</dialog>
+	<h1>Contenido interactivo</h1>
+	<details> <!-- Crea un acordeon sin js -->
+		<summary>HTML</summary> <!-- sumario, resumen -->
+		<p>Lenguaje de marcado de hipertexto</p>
+		<p>Se creo en 1989</p>
+	</details>
+	<button id="boton">Abrir modal</button>
+
+	<hr>
+
+	<h1>Contenido Embebido</h1>
+
+	<!-- iframe permite traer toda la estructura de una pagina web en este caso toda la infraestrctura de video de youtube -->
+	<iframe width="560" height="315" src="https://www.youtube.com/embed/NDhJfHhe3e4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+	
+	<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d25318.351266734844!2d-99.15475179515063!3d19.386662696364453!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1ff08c16cbd6d%3A0xdb83219f8ccb475d!2sTorres%20Adalid%201314%2C%20Narvarte%20Poniente%2C%20Benito%20Ju%C3%A1rez%2C%2003020%20Ciudad%20de%20M%C3%A9xico%2C%20CDMX!5e0!3m2!1ses!2smx!4v1597535991199!5m2!1ses!2smx" width="450" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+
+	<script>
+		const modal = document.getElementById('modal');
+		const boton = document.getElementById('boton');
+		const cerrar = document.getElementById('cerrar');
+		boton.addEventListener('click', ()=> {modal.setAttribute('open',true)})
+		cerrar.addEventListener('click', ()=> {modal.removeAttribute('open')})
+	</script>
+</body>
+</html>
